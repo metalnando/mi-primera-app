@@ -1,58 +1,54 @@
 let contador = 0;
 
-//elementos del DOM
-
+// elementos del DOM
 const contadorDisplay = document.getElementById('contador');
 const btnClick = document.getElementById('btn-click');
 const btnReset = document.getElementById('btn-reset');
 const fechaElement = document.getElementById('fecha');
 
-//Funcion para actualizar contador
-
-function actualizarContador(){
+// función para actualizar contador
+function actualizarContador() {
     contador++;
     contadorDisplay.textContent = contador;
 
-    //Animacion simple
+    // animación simple
     contadorDisplay.style.transform = 'scale(1.2)';
-    setTimeout(() =>{
+    setTimeout(() => {
         contadorDisplay.style.transform = 'scale(1)';
-
     }, 200);
 }
 
-//Funcion para resetear contador
+// función para resetear contador
 function resetearContador() {
     contador = 0;
     contadorDisplay.textContent = contador;
 }
 
-//Event Listenears
+// listeners
 btnClick.addEventListener('click', actualizarContador);
 btnReset.addEventListener('click', resetearContador);
 
-//inicialización
-document.addEventListener('DOMContentLoaded', function(){
+// inicialización fecha
+document.addEventListener('DOMContentLoaded', function () {
     const ahora = new Date();
     fechaElement.textContent = ahora.toLocaleDateString('es-CO');
 });
 
-//funcion para simular cambio de entorno
-
+// función para cambiar entorno
 function cambiarEntorno(nuevoEntorno) {
     document.getElementById('entorno').textContent = nuevoEntorno;
 
-    //cambiar color segun entorno
-    const statusCard = document.querySelector('status-card');
-    switch(nuevoEntorno) {
+    const statusCard = document.querySelector('.status-card');
+
+    switch (nuevoEntorno) {
         case 'Desarrollo':
-            statusCard.style.borderLeftColor = '#4ECDC4';
+            statusCard.style.borderLeft = '8px solid #694ECD';
             break;
         case 'Pruebas':
-            statusCard.style.borderLeftColor = '#FFD93D';
+            statusCard.style.borderLeft = '8px solid #FFD93D';
             break;
         case 'Produccion':
-            statusCard.style.borderLeftColor = '#6BCF7F';
+            statusCard.style.borderLeft = '8px solid #6BCF7F';
             break;
     }
 }
